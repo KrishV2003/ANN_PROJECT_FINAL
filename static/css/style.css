@@ -1,0 +1,49 @@
+/* Base Typography & Colors */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f1f5f9;
+}
+
+/* Navbar Logo */
+.logo {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+/* Hero Section */
+header.bg-light {
+  background-color: #f8f9fa;
+}
+
+header h1 {
+  color: #000; /* Black main heading */
+}
+
+/* Card Styling */
+.card {
+  border-radius: 0.75rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #1e40af;
+  border-color: #1e40af;
+}
+.btn-primary:hover {
+  background-color: #1e3a8a;
+  border-color: #1e3a8a;
+}
+
+/* Result Alert */
+#result .alert {
+  background-color: #e0f2fe;
+  border-color: #bae6fd;
+  color: #0369a1;
+}
+
+/* Footer */
+footer {
+  background-color: #1e293b;
+  color: #cbd5e1;
+}

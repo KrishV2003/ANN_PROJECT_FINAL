@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonar Classifier Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="{{ url_for('static', filename='img/logo.png') }}"
+            alt="Logo"
+            class="me-2 logo"
+          />
+          <span class="fw-semibold">Sonar Classifier</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-light py-5">
+      <div class="container text-center">
+        <h1 class="display-5 fw-bold text-dark">
+          Professional Sonar Signal Classification
+        </h1>
+        <p class="lead text-muted">
+          Upload your sonar CSV file to get instant, reliable predictions.
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5 flex-grow-1">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+              <!-- CSV Upload Only -->
+              <form id="fileForm" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="csvFile" class="form-label">Select CSV file:</label>
+                  <input
+                    class="form-control"
+                    type="file"
+                    id="csvFile"
+                    name="file"
+                    accept=".csv"
+                    required
+                  />
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary btn-lg">
+                    Predict
+                  </button>
+                </div>
+              </form>
+
+              <!-- Spinner -->
+              <div id="spinner" class="text-center my-4" style="display: none">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+
+              <!-- Result -->
+              <div id="result" class="mt-4" style="display: none">
+                <div
+                  class="alert alert-info text-center py-3 fs-5"
+                  id="resultText"
+                ></div>
+                <canvas id="confidenceChart" height="150"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+      <div class="container">
+        &copy; 2025 Sonar Classifier. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
