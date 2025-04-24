@@ -35,23 +35,23 @@ def predict_file():
 
         file = request.files['file']
         df = pd.read_csv(file, header=None)
-
-        # If uploaded as 60×1, transpose to 1×60
-        if df.shape == (60, 1):
-            df = df.transpose()
+        
+        # Check if the DataFrame is (60, 1) (i.e., 60 values, one per row) then transpose it
+        if df.shape[0] == 60 and df.shape[1] == 1:
+            df = df.transpose()  # Now shape is (1, 60)
 
         X = df.values.astype(np.float32)
         X_scaled = scaler.transform(X)
 
-        # model.predict returns [[prob]]
-        prob = float(model.predict(X_scaled)[0][0])
+        pred = model.predict(X_scaled)
+        # Use the first prediction for simplicity
+        prob = float(pred[0][0])
         label = 'Mine' if prob > 0.5 else 'Rock'
 
         return jsonify({
-            'label':      label,
+            'label': label,
             'confidence': {'rock': 1 - prob, 'mine': prob}
         })
-
     except Exception as e:
         return jsonify({'error': str(e)}), 400
 
