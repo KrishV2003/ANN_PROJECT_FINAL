@@ -6,3 +6,4 @@ tensorflow
 joblib
 keras-tuner
 shap
+gunicorn
